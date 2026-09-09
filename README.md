@@ -91,6 +91,8 @@ backend/.venv/bin/pytest
 
 - Never commit `.env`, API keys, tokens, passwords, Supabase service-role keys, or LLM keys
 - Use `.env.example` files for variable names only
+- Supabase MCP uses OAuth; do not put access tokens in tracked MCP JSON files
+- See [docs/supabase-mcp.md](docs/supabase-mcp.md) for MCP setup
 - Distinguish authoritative, derived, synthetic, and unresolved data
 - Never fabricate BIS metadata, standard numbers, or BIS URLs
 - Never treat UNKNOWN as a positive fact
@@ -99,7 +101,7 @@ backend/.venv/bin/pytest
 
 ## Dataset
 
-The ManakSetu BIS Data V0.4 corpus will be integrated after the production schema is designed. Do not import it in Phase 0.
+The ManakSetu BIS Data V0.4 corpus will be integrated after the production schema is designed. Do not import it in Phase 0 or Phase 1.
 
 ## Repository layout
 
@@ -108,7 +110,7 @@ frontend/     React + Vite application
 backend/      FastAPI application
 supabase/     Future migrations (empty of tables in Phase 0)
 scripts/      Local development helpers
-docs/         Architecture and phase plan
+docs/         Architecture, development plan, MCP setup
 tests/        Automated tests
-.cursor/      Cursor Agent project rules
+.cursor/      Cursor Agent rules and project MCP config (no secrets)
 ```

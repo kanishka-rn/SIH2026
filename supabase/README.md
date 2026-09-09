@@ -2,7 +2,7 @@
 
 This directory is reserved for the production PostgreSQL schema.
 
-Phase 0 does **not** create tables, run migrations, or import the ManakSetu dataset.
+Do **not** create tables, run migrations, or import the ManakSetu dataset until a later phase.
 
 ## Planned layout (later phases)
 
@@ -19,4 +19,6 @@ Phase 0 does **not** create tables, run migrations, or import the ManakSetu data
 
 Do not design the production application around SQLite.
 
-The Supabase MCP server is not connected in this environment. Connect it in Phase 1 without putting secrets in git.
+## MCP
+
+Cursor uses the official Supabase MCP server. Setup (OAuth only, no secrets in git) is documented in [docs/supabase-mcp.md](../docs/supabase-mcp.md).

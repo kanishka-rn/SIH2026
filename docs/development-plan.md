@@ -4,11 +4,11 @@ This is a sequencing document. Phases after 0 are **not** implemented until requ
 
 ## Phase 0 — Foundation
 
-Monorepo, frontend Vite/React/TypeScript shell, FastAPI shell, Supabase directory, docs, gitignore, env examples. Current phase.
+Monorepo, frontend Vite/React/TypeScript shell, FastAPI shell, Supabase directory, docs, gitignore, env examples. Complete.
 
 ## Phase 1 — GitHub + Supabase MCP
 
-Confirm remotes. Connect Supabase MCP in Cursor. No table creation unless explicitly requested as part of a later schema phase.
+GitHub remote confirmed. Official Supabase MCP authenticated in Cursor. Organization **SIH2026** is visible. No database project existed at verification time, so table inspection against a project could not run. No tables created.
 
 ## Phase 2 — Database architecture
 
