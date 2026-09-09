@@ -1,0 +1,35 @@
+---
+description: SIH2026 engineering constraints for Cursor Agent
+alwaysApply: true
+---
+
+# SIH2026 / SIH26108
+
+This is an AI-powered procurement standards intelligence platform, not a chatbot.
+
+## Do not
+
+- Fabricate BIS metadata, standard numbers, or BIS URLs
+- Treat UNKNOWN as a positive factual claim
+- Claim certification or QCO obligations without authoritative data
+- Let the LLM independently invent or select standards
+- Copy the testing2 demo wholesale
+- Commit secrets, `.env` files, API keys, or service-role keys
+- Design production around SQLite
+- Implement later phases unless the user asks
+
+## Retrieval contract (future)
+
+User query/document → normalization → requirement extraction → lexical retrieval → semantic retrieval → metadata filtering → candidate fusion → reranking → relationship expansion → compliance/lifecycle enrichment → evidence extraction → confidence calculation → recommendation.
+
+The LLM explains evidence-backed pipeline results only.
+
+## Supabase
+
+Use official Supabase MCP tools for database operations. Do not ask the user to paste secrets or run SQL in the dashboard unless the platform blocks MCP.
+
+Never commit API keys. Prefer publishable (`sb_publishable_...`) keys in the frontend and secret (`sb_secret_...`) keys on the server.
+
+## Current phase
+
+Stop after the requested phase. Do not skip ahead to schema design, dataset import, retrieval, or UI features.
