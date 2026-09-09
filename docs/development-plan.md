@@ -12,13 +12,13 @@ GitHub remote confirmed. Official Supabase MCP authenticated in Cursor. Organiza
 
 ## Phase 2 — Database architecture
 
-**Connection/inspection complete** for database project **SIH2026** (`umgugjqfspmkrwtargen`). Postgres 17.6 is reachable via MCP. `public` has no application tables. `vector` is available but not enabled. Schema design, migrations, and dataset import have **not** started.
+**Connection/inspection complete** for database project **SIH2026** (`umgugjqfspmkrwtargen`). Postgres 17.6 is reachable via MCP. `public` has no application tables. `vector` is available but not enabled.
 
-Remaining in this phase when requested: design PostgreSQL schema for standards, relationships, compliance, provenance, users/history. Migrations and indexes. pgvector and FTS. No SQLite production path.
+## Phase 3 — Dataset audit + schema design
 
-## Phase 3 — Dataset ingestion
+Design docs added (`docs/dataset-inventory.md`, `docs/database-design.md`, and related). **V0.4 files and `testing2` were not present in the agent workspace**; inventory row counts were not invented. **No tables created. No import.**
 
-Import ManakSetu BIS Data V0.4 with explicit data-class tagging (authoritative / derived / synthetic / unresolved). No fabrication.
+Original ingestion work remains blocked until files are available and the schema is approved.
 
 ## Phase 4 — Backend API
 

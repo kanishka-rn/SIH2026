@@ -107,6 +107,8 @@ Unknown must remain unknown. Certification and QCO obligations are stated only w
 
 Procurement requirement → Analyze → Requirements detected → Candidates retrieved → Ranked standards → Related standards → Compliance/lifecycle → Evidence + provenance → Confidence → Recommendation → Save / Compare / Export.
 
+See [docs/database-design.md](database-design.md) for the production schema proposal (not applied). Dataset inventory: [docs/dataset-inventory.md](dataset-inventory.md).
+
 ## What Phase 0 does not include
 
 - Production tables or migrations
