@@ -1,36 +1,75 @@
-# Supabase MCP (Phase 1)
+# Supabase MCP
 
-Cursor connects to this workspace through the official hosted Supabase MCP server.
+Cursor uses the official hosted Supabase MCP server for this repository. From Phase 2 onward, agents should use MCP tools for Supabase operations instead of asking someone to run SQL in the dashboard.
 
-## Configuration (no secrets)
+## Connected project
 
-Tracked files (URLs only):
+| Field | Value |
+| --- | --- |
+| Organization | SIH2026 |
+| Database project name | SIH2026 |
+| Project ref | `umgugjqfspmkrwtargen` |
+| Region | ap-northeast-1 |
+| Status at last check | ACTIVE_HEALTHY |
+| Postgres | 17.6 |
+| API URL | `https://umgugjqfspmkrwtargen.supabase.co` |
 
-- `.cursor/mcp.json` — Cursor project MCP config
-- `.mcp.json` — generic MCP client config
+The project ref appears in the public API hostname. It is **not** a password, API key, or service-role key.
 
-Server URL: `https://mcp.supabase.com/mcp`
+## How Cursor accesses Supabase
 
-OAuth tokens and API keys must **not** be stored in these files. Cursor authenticates with Supabase via OAuth 2.1.
+1. Tracked config (URLs only):
+   - `.cursor/mcp.json` — Cursor
+   - `.mcp.json` — other MCP clients
+2. Server: `https://mcp.supabase.com/mcp?project_ref=umgugjqfspmkrwtargen`
+3. Authentication: OAuth 2.1 inside Cursor (**Settings → Cursor Settings → Tools & MCP**). Do not paste access tokens, secret keys, or database passwords into chat.
+4. Agents then call MCP tools such as `list_tables`, `list_extensions`, `execute_sql`, and (in later phases) migrations.
 
-## Authenticate in Cursor
+Local CLI login, if needed: `agent mcp login supabase`
 
-1. Open **Settings → Cursor Settings → Tools & MCP**.
-2. Confirm the `supabase` server is listed.
-3. If it shows that authentication is required, use Cursor’s **Authenticate** / MCP login action for that server.
-4. In the browser, sign in to the Supabase account that owns the **SIH2026** organization and approve access.
-5. Do not paste access tokens, service-role keys, or database passwords into chat.
+## What MCP is used for
 
-CLI equivalent (local Cursor): `agent mcp login supabase`
+- Discovering the SIH2026 project
+- Read-only inspection of Postgres (schemas, tables, extensions)
+- Later phases: schema/migrations, advisors, and other platform operations **when explicitly requested**
 
-## What Phase 1 verified
+MCP is not used to store application secrets in git.
 
-- MCP server is reachable.
-- Cursor can authenticate and list organizations.
-- Organization name: **SIH2026** (free plan).
-- **No Supabase database project** was present on that account at verification time (`list_projects` returned none).
-- No tables were created. No dataset was imported.
+## Secrets
 
-## Next (not done in this phase)
+Never commit:
 
-Creating a database **project** named SIH2026 (if you want one under that organization) is a later explicit step. Schema design and migrations are Phase 2.
+- `.env` / `.env.local`
+- publishable or secret API keys
+- legacy `anon` / `service_role` JWT keys
+- `DATABASE_URL` passwords
+- OAuth access tokens
+- Vault secrets
+
+Use `.env.example` files for **variable names only**. Copy them locally and fill values from the Supabase dashboard.
+
+Current key terminology (do not mix these into the frontend):
+
+| Use | Variable | Notes |
+| --- | --- | --- |
+| Browser / public client | `VITE_SUPABASE_PUBLISHABLE_KEY` | `sb_publishable_...` |
+| Backend privileged access | `SUPABASE_SECRET_KEY` | `sb_secret_...` — server only |
+| Legacy compatibility | `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` | JWT keys; prefer publishable/secret |
+
+## Inspection snapshot (Phase 2)
+
+Read-only. Nothing was created or altered.
+
+- `public` tables: **0**
+- `public` views: **0**
+- `public` functions: **0**
+- Application migrations: **none**
+- Installed extensions: `plpgsql`, `pgcrypto`, `uuid-ossp`, `pg_stat_statements`, `supabase_vault`
+- **pgvector (`vector`)**: available (default 0.8.2), **not installed**
+- PostgreSQL full-text search: built-in `to_tsvector` works; text-search configs include `simple`, `english`, `hindi`, `tamil`, and others. `pg_trgm` is available but not installed.
+
+Platform schemas (`auth`, `storage`, `realtime`, `vault`, …) exist as part of a new Supabase project. They are not application tables.
+
+## Next phase (not started)
+
+Database schema design, enabling `vector` if required, migrations, RLS, and dataset import happen **only** when requested. Do not create tables in this phase.

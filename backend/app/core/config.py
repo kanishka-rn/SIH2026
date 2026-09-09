@@ -17,6 +17,9 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:5173"
 
     supabase_url: str = ""
+    supabase_project_ref: str = ""
+    supabase_publishable_key: str = ""
+    supabase_secret_key: str = ""
     supabase_anon_key: str = ""
     supabase_service_role_key: str = ""
     database_url: str = ""
@@ -25,6 +28,11 @@ class Settings(BaseSettings):
     llm_api_key: str = ""
     llm_base_url: str = ""
     llm_model: str = ""
+
+    embedding_provider: str = ""
+    embedding_api_key: str = ""
+    embedding_base_url: str = ""
+    embedding_model: str = ""
 
     @property
     def cors_origin_list(self) -> list[str]:

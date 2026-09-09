@@ -21,4 +21,4 @@ Do not design the production application around SQLite.
 
 ## MCP
 
-Cursor uses the official Supabase MCP server. Setup (OAuth only, no secrets in git) is documented in [docs/supabase-mcp.md](../docs/supabase-mcp.md).
+Cursor uses the official Supabase MCP server against database project **SIH2026**. Setup (OAuth only, no secrets in git) is documented in [docs/supabase-mcp.md](../docs/supabase-mcp.md). Schema and data import are not in this directory yet.

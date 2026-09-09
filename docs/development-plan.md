@@ -8,11 +8,13 @@ Monorepo, frontend Vite/React/TypeScript shell, FastAPI shell, Supabase director
 
 ## Phase 1 — GitHub + Supabase MCP
 
-GitHub remote confirmed. Official Supabase MCP authenticated in Cursor. Organization **SIH2026** is visible. No database project existed at verification time, so table inspection against a project could not run. No tables created.
+GitHub remote confirmed. Official Supabase MCP authenticated in Cursor. Organization **SIH2026** is visible.
 
 ## Phase 2 — Database architecture
 
-Design PostgreSQL schema for standards, relationships, compliance, provenance, users/history. Migrations and indexes. pgvector and FTS. No SQLite production path.
+**Connection/inspection complete** for database project **SIH2026** (`umgugjqfspmkrwtargen`). Postgres 17.6 is reachable via MCP. `public` has no application tables. `vector` is available but not enabled. Schema design, migrations, and dataset import have **not** started.
+
+Remaining in this phase when requested: design PostgreSQL schema for standards, relationships, compliance, provenance, users/history. Migrations and indexes. pgvector and FTS. No SQLite production path.
 
 ## Phase 3 — Dataset ingestion
 
